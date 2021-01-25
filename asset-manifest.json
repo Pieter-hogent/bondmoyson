@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/bondmoyson/static/css/main.b41706c6.chunk.css",
+    "main.js": "/bondmoyson/static/js/main.2c773fa7.chunk.js",
+    "main.js.map": "/bondmoyson/static/js/main.2c773fa7.chunk.js.map",
+    "runtime-main.js": "/bondmoyson/static/js/runtime-main.ffd94bcc.js",
+    "runtime-main.js.map": "/bondmoyson/static/js/runtime-main.ffd94bcc.js.map",
+    "static/js/2.53445b1d.chunk.js": "/bondmoyson/static/js/2.53445b1d.chunk.js",
+    "static/js/2.53445b1d.chunk.js.map": "/bondmoyson/static/js/2.53445b1d.chunk.js.map",
+    "static/js/3.a61c05cc.chunk.js": "/bondmoyson/static/js/3.a61c05cc.chunk.js",
+    "static/js/3.a61c05cc.chunk.js.map": "/bondmoyson/static/js/3.a61c05cc.chunk.js.map",
+    "index.html": "/bondmoyson/index.html",
+    "static/css/main.b41706c6.chunk.css.map": "/bondmoyson/static/css/main.b41706c6.chunk.css.map",
+    "static/js/2.53445b1d.chunk.js.LICENSE.txt": "/bondmoyson/static/js/2.53445b1d.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ffd94bcc.js",
+    "static/js/2.53445b1d.chunk.js",
+    "static/css/main.b41706c6.chunk.css",
+    "static/js/main.2c773fa7.chunk.js"
+  ]
+}

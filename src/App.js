@@ -111,7 +111,7 @@ function App() {
 						</svg>
 					</button>
 				</span>
-				<span className="ml-auto pr-6">
+				<span className="ml-auto mr-4 m-2 p-2 border-2 rounded-xl border-red-200">
 					<span className="inline-grid grid-rows-3 gap-y-2 self-end">
 						<span className="font-mono text-lg">
 							€ {calculateAllPersonsTotal().toFixed(2)} / j

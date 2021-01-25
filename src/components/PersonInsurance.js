@@ -37,7 +37,12 @@ export default function PersonInsurance({ person, onChange }) {
 			})}
 
 			<td className="px-6 py-4 whitespace-nowrap">
-				<span className="inline-grid grid-rows-3 gap-y-2">
+				<span
+					className={
+						(calculateTotal(person) === 0 ? 'opacity-40' : '') +
+						' inline-grid grid-rows-3 gap-y-2'
+					}
+				>
 					<span className="font-mono">
 						{' '}
 						€ {calculateTotal(person).toFixed(2)} / j

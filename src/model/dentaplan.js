@@ -1,0 +1,16 @@
+export const dentaplan = [
+	{ start: 45, from: 0, to: 3, price: 0 },
+	{ start: 45, from: 4, to: 6, price: 19.2 },
+	{ start: 45, from: 7, to: 17, price: 60.72 },
+	{ start: 45, from: 18, to: 29, price: 95.16 },
+	{ start: 45, from: 30, to: 44, price: 129.12 },
+	{ start: 45, from: 45, to: 49, price: 164.16 },
+	{ start: 45, from: 50, to: 59, price: 181.8 },
+	{ start: 45, from: 60, to: 999, price: 194.64 },
+	{ start: 49, from: 45, to: 49, price: 241.68 },
+	{ start: 49, from: 50, to: 59, price: 270.72 },
+	{ start: 49, from: 60, to: 999, price: 289.92 },
+	{ start: 59, from: 50, to: 59, price: 273.12 },
+	{ start: 59, from: 60, to: 999, price: 292.32 },
+	{ from: 60, to: 999, price: 331.44 },
+];

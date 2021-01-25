@@ -12,7 +12,7 @@ function App() {
 	useEffect(() => {
 		insurances.map((ins) => (emptyPerson.insurances[ins] = true));
 		emptyPerson.insurances['kliniplanplus'] = false;
-		setState([emptyPerson]);
+		setState([emptyPerson, emptyPerson, emptyPerson, emptyPerson]);
 	}, []);
 
 	const addRow = () => {
@@ -61,7 +61,7 @@ function App() {
 					<button
 						type="button"
 						onClick={addRow}
-						className="inline-flex items-center p-2 border border-transparent rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+						className="inline-flex items-center p-2 border border-transparent rounded-full shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
 					>
 						<svg
 							className="h-6 w-6"
@@ -82,7 +82,7 @@ function App() {
 					<button
 						type="button"
 						onClick={removeRow}
-						className="inline-flex items-center p-2 border border-transparent rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+						className="inline-flex items-center p-2 border border-transparent rounded-full shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
 					>
 						<svg
 							className="h-6 w-6"

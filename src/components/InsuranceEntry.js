@@ -1,5 +1,5 @@
 export default function InsuranceEntry({ price, active, toggle }) {
-	let cssClass = active ? ' bg-green-200' : ' bg-gray-50 ';
+	let cssClass = active ? ' bg-red-200' : ' bg-gray-50 ';
 	cssClass += ' px-6 py-4 whitespace-nowrap';
 	return (
 		<td className={cssClass}>

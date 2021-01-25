@@ -54,6 +54,15 @@ function App() {
 		);
 		return total;
 	};
+	const imageNameForInsurance = (ins) => {
+		if (ins === 'kliniplanplus')
+			return process.env.PUBLIC_URL + '/icon-kliniplan.svg';
+		return process.env.PUBLIC_URL + '/icon-' + ins + '.svg';
+	};
+	const insuranceNameForInsurance = (ins) => {
+		if (ins === 'kliniplanplus') return 'kliniplan+';
+		return ins;
+	};
 	return (
 		<>
 			<span className="flex flex-row flex-none">
@@ -147,9 +156,18 @@ function App() {
 											return (
 												<th
 													scope="col"
-													className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+													className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase  "
 												>
-													{i}
+													<span className="inline-grid grid-cols-3 gap-x-1 align-middle">
+														<img
+															src={imageNameForInsurance(i)}
+															width="16px"
+															height="16px"
+														></img>
+														<span className="align-middle">
+															{insuranceNameForInsurance(i)}
+														</span>
+													</span>
 												</th>
 											);
 										})}
@@ -161,7 +179,7 @@ function App() {
 										</th>
 									</tr>
 								</thead>
-								<tbody class="bg-white divide-y divide-gray-200">
+								<tbody className="bg-white divide-y divide-gray-200">
 									{state.map((person, idx) => {
 										return (
 											<PersonInsurance

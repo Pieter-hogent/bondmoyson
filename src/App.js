@@ -12,6 +12,7 @@ function App() {
 	useEffect(() => {
 		insurances.map((ins) => (emptyPerson.insurances[ins] = true));
 		emptyPerson.insurances['kliniplanplus'] = false;
+		emptyPerson.insurances['viviplan'] = false;
 		setState([emptyPerson, emptyPerson, emptyPerson, emptyPerson]);
 	}, []);
 

@@ -7,6 +7,7 @@ const insurances = ['kliniplan', 'kliniplanplus', 'dentaplan', 'viviplan'];
 const emptyPerson = { name: '', age: 0, startAge: 0, insurances: {} };
 
 function App() {
+	// state is an array of persons
 	const [state, setState] = useState([]);
 
 	useEffect(() => {
@@ -24,9 +25,13 @@ function App() {
 		newState.pop();
 		setState(newState);
 	};
+
+	// we don't want both kliniplan AND kliniplanplus active
+	// simultaneously, so check for activating of either and deactivate other
 	const personChange = (idx) => (person) => {
 		let newState = state.map((oldPerson, i) => {
 			if (i === idx) {
+				// if activating kliniplan, make sure kliniplanplus gets deactivated
 				if (
 					oldPerson.insurances['kliniplan'] !==
 						person.insurances['kliniplan'] &&
@@ -34,6 +39,7 @@ function App() {
 				) {
 					person.insurances['kliniplanplus'] = false;
 				}
+				// and vice versa
 				if (
 					oldPerson.insurances['kliniplanplus'] !==
 						person.insurances['kliniplanplus'] &&
@@ -64,10 +70,13 @@ function App() {
 		if (ins === 'kliniplanplus') return 'kliniplan+';
 		return ins;
 	};
+
+	//
 	return (
 		<>
 			<span className="flex flex-row flex-none">
 				<span className="inline-grid grid-cols-2 gap-x-3 p-5 self-start ">
+					{/* + and - buttons, at top left */}
 					<button
 						type="button"
 						onClick={addRow}
@@ -111,6 +120,7 @@ function App() {
 						</svg>
 					</button>
 				</span>
+				{/* total price of all persons (displayed at top right) */}
 				<span className="ml-auto mr-4 m-2 p-2 border-2 rounded-xl border-red-200">
 					<span className="inline-grid grid-rows-3 gap-y-2 self-end">
 						<span className="font-mono text-lg">
@@ -128,6 +138,7 @@ function App() {
 				</span>
 			</span>
 
+			{/* table with all persons and their costs */}
 			<div className="flex flex-col">
 				<div className="overflow-x-auto  ">
 					<div className=" align-middle inline-block min-w-full ">

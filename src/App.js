@@ -11,9 +11,7 @@ function App() {
 	const [state, setState] = useState([]);
 
 	useEffect(() => {
-		insurances.map((ins) => (emptyPerson.insurances[ins] = true));
-		emptyPerson.insurances['kliniplanplus'] = false;
-		emptyPerson.insurances['viviplan'] = false;
+		insurances.map((ins) => (emptyPerson.insurances[ins] = false));
 		setState([emptyPerson, emptyPerson, emptyPerson, emptyPerson]);
 	}, []);
 

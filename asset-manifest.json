@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/bondmoyson/static/css/main.b41706c6.chunk.css",
-    "main.js": "/bondmoyson/static/js/main.7b4fb6d6.chunk.js",
-    "main.js.map": "/bondmoyson/static/js/main.7b4fb6d6.chunk.js.map",
+    "main.js": "/bondmoyson/static/js/main.de2d63de.chunk.js",
+    "main.js.map": "/bondmoyson/static/js/main.de2d63de.chunk.js.map",
     "runtime-main.js": "/bondmoyson/static/js/runtime-main.ffd94bcc.js",
     "runtime-main.js.map": "/bondmoyson/static/js/runtime-main.ffd94bcc.js.map",
     "static/js/2.53445b1d.chunk.js": "/bondmoyson/static/js/2.53445b1d.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.ffd94bcc.js",
     "static/js/2.53445b1d.chunk.js",
     "static/css/main.b41706c6.chunk.css",
-    "static/js/main.7b4fb6d6.chunk.js"
+    "static/js/main.de2d63de.chunk.js"
   ]
 }

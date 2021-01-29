@@ -5,6 +5,9 @@ import { kliniplanplus } from './kliniplanplus';
 
 const prices = { kliniplan, kliniplanplus, dentaplan, viviplan };
 
+const ziekenfondsbijdrage = 89.76;
+const zorgkas = 54;
+
 export const getInsurancePrice = (plan, age, startAge = null) => {
 	if (!age) return 0;
 	if (!startAge) startAge = age;
@@ -34,5 +37,7 @@ export const calculateTotal = (person) => {
 			total += getInsurancePrice(ins, person.age, person.startAge);
 		}
 	});
+	if (person.age >= 26) total += zorgkas;
+	if (person.chargeable) total += ziekenfondsbijdrage;
 	return total;
 };

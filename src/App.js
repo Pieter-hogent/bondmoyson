@@ -4,7 +4,14 @@ import PersonInsurance from './components/PersonInsurance';
 import { calculateTotal } from './model/pricetable';
 
 const insurances = ['kliniplan', 'kliniplanplus', 'dentaplan', 'viviplan'];
-const emptyPerson = { name: '', age: 0, startAge: 0, insurances: {} };
+const emptyPerson = {
+	name: '',
+	age: 0,
+	startAge: 0,
+	insurances: {},
+	chargeable: false,
+	chargeableCanChange: false,
+};
 
 function App() {
 	// state is an array of persons
@@ -45,6 +52,13 @@ function App() {
 				) {
 					person.insurances['kliniplan'] = false;
 				}
+
+				// force 'ten laste' based on age
+				if (person.age >= 25) person.chargeable = true;
+				// if (person.age < 18) person.chargeable = false;
+
+				person.chargeableCanChange = person.age < 25; // && person.age >= 18;
+
 				return person;
 			}
 			return oldPerson;
@@ -52,13 +66,24 @@ function App() {
 
 		setState(newState);
 	};
-	const calculateAllPersonsTotal = () => {
+
+	const calculateAllPersonsInsurances = () => {
 		let total = state.reduce(
 			(total, person) => total + calculateTotal(person),
 			0
 		);
 		return total;
 	};
+
+	const calculateAllPersonsTotal = () => {
+		let total = state.reduce(
+			(total, person) => total + calculateTotal(person),
+
+			0
+		);
+		return total;
+	};
+
 	const imageNameForInsurance = (ins) => {
 		if (ins === 'kliniplanplus')
 			return process.env.PUBLIC_URL + '/icon-kliniplan.svg';
@@ -118,9 +143,10 @@ function App() {
 						</svg>
 					</button>
 				</span>
+
 				{/* total price of all persons (displayed at top right) */}
-				<span className="ml-auto mr-4 m-2 p-2 border-2 rounded-xl border-red-200">
-					<span className="inline-grid grid-rows-3 gap-y-2 self-end">
+				<span className="ml-auto ">
+					<span className="inline-grid grid-rows-3 gap-y-2 self-end mr-4 m-2 p-2 border-2 rounded-xl border-red-200">
 						<span className="font-mono text-lg">
 							€ {calculateAllPersonsTotal().toFixed(2)} / j
 						</span>
@@ -161,6 +187,12 @@ function App() {
 											className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
 										>
 											instap
+										</th>
+										<th
+											scope="col"
+											className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+										>
+											bijdrage
 										</th>
 										{insurances.map((i) => {
 											return (

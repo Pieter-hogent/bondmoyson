@@ -3,14 +3,19 @@ import './App.css';
 import PersonInsurance from './components/PersonInsurance';
 import { calculateTotal } from './model/pricetable';
 
-const insurances = ['kliniplan', 'kliniplanplus', 'dentaplan', 'viviplan'];
+const insurances = [
+	'bijdrage',
+	'zorgkas',
+	'kliniplan',
+	'kliniplanplus',
+	'dentaplan',
+	'viviplan',
+];
 const emptyPerson = {
 	name: '',
 	age: 0,
 	startAge: 0,
 	insurances: {},
-	chargeable: false,
-	chargeableCanChange: false,
 };
 
 function App() {
@@ -19,6 +24,8 @@ function App() {
 
 	useEffect(() => {
 		insurances.map((ins) => (emptyPerson.insurances[ins] = false));
+		emptyPerson.insurances['zorgkas'] = true;
+		emptyPerson.insurances['bijdrage'] = true;
 		setState([emptyPerson, emptyPerson, emptyPerson, emptyPerson]);
 	}, []);
 
@@ -53,12 +60,9 @@ function App() {
 					person.insurances['kliniplan'] = false;
 				}
 
-				// force 'ten laste' based on age
-				if (person.age >= 25) person.chargeable = true;
-				// if (person.age < 18) person.chargeable = false;
-
-				person.chargeableCanChange = person.age < 25; // && person.age >= 18;
-
+				if (oldPerson.age !== person.age) {
+					person.insurances['bijdrage'] = person.age >= 25;
+				}
 				return person;
 			}
 			return oldPerson;
@@ -85,6 +89,7 @@ function App() {
 	};
 
 	const imageNameForInsurance = (ins) => {
+		if (ins === 'zorgkas' || ins === 'bijdrage') return null;
 		if (ins === 'kliniplanplus')
 			return process.env.PUBLIC_URL + '/icon-kliniplan.svg';
 		return process.env.PUBLIC_URL + '/icon-' + ins + '.svg';
@@ -188,12 +193,7 @@ function App() {
 										>
 											instap
 										</th>
-										<th
-											scope="col"
-											className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-										>
-											bijdrage
-										</th>
+
 										{insurances.map((i) => {
 											return (
 												<th
@@ -201,11 +201,15 @@ function App() {
 													className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase  "
 												>
 													<span className="inline-grid grid-cols-3 gap-x-1 align-middle">
-														<img
-															src={imageNameForInsurance(i)}
-															width="16px"
-															height="16px"
-														></img>
+														{imageNameForInsurance(i) ? (
+															<img
+																src={imageNameForInsurance(i)}
+																width="16px"
+																height="16px"
+															></img>
+														) : (
+															''
+														)}
 														<span className="align-middle">
 															{insuranceNameForInsurance(i)}
 														</span>

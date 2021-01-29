@@ -12,9 +12,9 @@ export default function InsuranceEntry({ price, active, toggle }) {
 				className={spanCssClass + ' inline-grid grid-rows-3 gap-y-2 p-2 m-2'}
 				onClick={toggle}
 			>
-				<span className="font-mono"> € {price.toFixed(2)} / j</span>
-				<span className="font-mono"> € {(price / 4).toFixed(2)} / 3m</span>
-				<span className="font-mono"> € {(price / 12).toFixed(2)} / m</span>
+				<span className="font-mono"> € {price.toFixed(2)}</span>
+				<span className="font-mono"> € {(price / 4).toFixed(2)}</span>
+				<span className="font-mono"> € {(price / 12).toFixed(2)}</span>
 			</span>
 		</td>
 	);

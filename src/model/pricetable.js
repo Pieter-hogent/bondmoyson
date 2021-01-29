@@ -3,10 +3,19 @@ import { viviplan } from './viviplan';
 import { kliniplan } from './kliniplan';
 import { kliniplanplus } from './kliniplanplus';
 
-const prices = { kliniplan, kliniplanplus, dentaplan, viviplan };
-
-const ziekenfondsbijdrage = 89.76;
-const zorgkas = 54;
+const bijdrage = [{ start: 999, from: 0, to: 999, price: 89.76 }];
+const zorgkas = [
+	{ start: 999, from: 0, to: 25, price: 0 },
+	{ start: 999, from: 26, to: 999, price: 54 },
+];
+const prices = {
+	bijdrage,
+	zorgkas,
+	kliniplan,
+	kliniplanplus,
+	dentaplan,
+	viviplan,
+};
 
 export const getInsurancePrice = (plan, age, startAge = null) => {
 	if (!age) return 0;
@@ -37,7 +46,7 @@ export const calculateTotal = (person) => {
 			total += getInsurancePrice(ins, person.age, person.startAge);
 		}
 	});
-	if (person.age >= 26) total += zorgkas;
-	if (person.chargeable) total += ziekenfondsbijdrage;
+	// if (person.age >= 26) total += zorgkas;
+	// if (person.chargeable) total += ziekenfondsbijdrage;
 	return total;
 };

@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import PersonInsurance from './components/PersonInsurance';
-import { calculateTotal } from './model/pricetable';
+import { calculateTotal, getInsurancePrice } from './model/pricetable';
+import ExcelExport from './components/ExcelExport';
 
 const insurances = [
 	'bijdrage',
@@ -21,6 +22,7 @@ const emptyPerson = {
 function App() {
 	// state is an array of persons
 	const [state, setState] = useState([]);
+	const [renderExcel, setRenderExcel] = useState(true);
 
 	useEffect(() => {
 		insurances.map((ins) => (emptyPerson.insurances[ins] = false));
@@ -71,14 +73,6 @@ function App() {
 		setState(newState);
 	};
 
-	const calculateAllPersonsInsurances = () => {
-		let total = state.reduce(
-			(total, person) => total + calculateTotal(person),
-			0
-		);
-		return total;
-	};
-
 	const calculateAllPersonsTotal = () => {
 		let total = state.reduce(
 			(total, person) => total + calculateTotal(person),
@@ -97,6 +91,24 @@ function App() {
 	const insuranceNameForInsurance = (ins) => {
 		if (ins === 'kliniplanplus') return 'kliniplan+';
 		return ins;
+	};
+
+	const createExcelData = () => {
+		let excelData = state.filter((x) => x.age > 0);
+
+		// console.log(excelData);
+		return excelData.map((person) => {
+			let excelPerson = { name: person.name, age: person.age };
+			Object.keys(person.insurances).map((ins) => {
+				excelPerson[ins] = person.insurances[ins]
+					? getInsurancePrice(ins, person.age, person.startAge)
+					: 0;
+				return ins;
+			});
+			excelPerson['totaal'] = calculateTotal(person);
+
+			return excelPerson;
+		});
 	};
 
 	//
@@ -149,6 +161,9 @@ function App() {
 					</button>
 				</span>
 
+				<span className="ml-auto">
+					{renderExcel ? <ExcelExport data={createExcelData()} /> : ''}
+				</span>
 				{/* total price of all persons (displayed at top right) */}
 				<span className="ml-auto ">
 					<span className="inline-grid grid-rows-3 gap-y-2 self-end mr-4 m-2 p-2 border-2 rounded-xl border-red-200">

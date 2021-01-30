@@ -162,7 +162,14 @@ function App() {
 				</span>
 
 				<span className="ml-auto">
-					{renderExcel ? <ExcelExport data={createExcelData()} /> : ''}
+					{renderExcel ? (
+						<ExcelExport
+							data={createExcelData()}
+							filename={`bond_moyson_${state[0].name}`}
+						/>
+					) : (
+						''
+					)}
 				</span>
 				{/* total price of all persons (displayed at top right) */}
 				<span className="ml-auto ">

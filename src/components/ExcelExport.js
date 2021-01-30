@@ -3,9 +3,21 @@ const ExcelFile = ReactExport.ExcelFile;
 const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
 const ExcelColumn = ReactExport.ExcelFile.ExcelColumn;
 
-export default function ExcelExport({ data }) {
+export default function ExcelExport({ data, filename }) {
 	return (
-		<ExcelFile element={<button>Download Excel</button>}>
+		<ExcelFile
+			filename={filename}
+			element={
+				<button className="p-3">
+					<img
+						src={process.env.PUBLIC_URL + '/excel_download.png'}
+						alt=""
+						width="48"
+						height="48"
+					/>
+				</button>
+			}
+		>
 			<ExcelSheet data={data} name="bond moyson">
 				<ExcelColumn label="naam" value="name" />
 				<ExcelColumn label="leeftijd" value="age" />
@@ -17,11 +29,6 @@ export default function ExcelExport({ data }) {
 				<ExcelColumn label="viviplan" value="viviplan" />
 				<ExcelColumn label="totaal" value="totaal" />
 			</ExcelSheet>
-			{/* <ExcelSheet data={dataSet2} name="Leaves">
-				<ExcelColumn label="Name" value="name" />
-				<ExcelColumn label="Total Leaves" value="total" />
-				<ExcelColumn label="Remaining Leaves" value="remaining" />
-			</ExcelSheet> */}
 		</ExcelFile>
 	);
 }

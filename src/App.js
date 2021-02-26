@@ -165,7 +165,9 @@ function App() {
 					{renderExcel ? (
 						<ExcelExport
 							data={createExcelData()}
-							filename={`bond_moyson_${state[0].name}`}
+							filename={
+								state[0] ? `bond_moyson_${state[0].name}` : 'bond_moyson_empty'
+							}
 						/>
 					) : (
 						''

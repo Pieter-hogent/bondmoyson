@@ -26,9 +26,9 @@ export const getInsurancePrice = (plan, age, startAge = null) => {
 	}
 	for (let price of prices[plan]) {
 		if (
-			(!price.start || startAge <= price.start) &&
+			(!price.start || Number(startAge) <= Number(price.start)) &&
 			((!price.to && Number(age) === Number(price.from)) ||
-				(age >= price.from && age <= price.to))
+				(Number(age) >= Number(price.from) && Number(age) <= Number(price.to)))
 		) {
 			return price.price;
 		}

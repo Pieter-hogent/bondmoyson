@@ -3,7 +3,7 @@ import { viviplan } from './viviplan';
 import { kliniplan } from './kliniplan';
 import { kliniplanplus } from './kliniplanplus';
 
-const bijdrage = [{ start: 999, from: 0, to: 999, price: 89.76 }];
+const bijdrage = [{ start: 999, from: 0, to: 999, price: 91.8 }];
 const zorgkas = [
 	{ start: 999, from: 0, to: 25, price: 0 },
 	{ start: 999, from: 26, to: 999, price: 54 },
